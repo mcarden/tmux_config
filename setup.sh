@@ -45,6 +45,9 @@ fi
 # Put our tmux.conf in place
 echo "Installing tmux config"
 cp -f "${DIR}/tmux.conf" "${HOME}/.tmux.conf"
+if [[ ! -e "${HOME}/.tmux.conf-overrides" ]]; then
+	cp -f "${DIR}/tmux.conf-overrides" "${HOME}/.tmux.conf-overrides"
+fi
 tmux source ~/.tmux.conf
 
 # Install all the plugins specified in .tmux.conf (or in tmux <prefix> + I)
