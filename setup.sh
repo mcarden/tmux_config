@@ -53,7 +53,4 @@ tmux -C run-shell ~/.tmux/plugins/tpm/bindings/install_plugins
 # Advise user of overrides
 cat << EOF
 All done!
-
-If you want to connect to a tmux session on a terminal start add the following to bashrc:
-echo 'tmux attach -t base || tmux new -s base' >> ~/.bashrc
 EOF
