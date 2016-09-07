@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Install tmux, run tmux, then run this script.
+
 # Enable debug if argument passed to script
 if [[ "${1}" =~ debug ]]; then
 	set -x
@@ -46,7 +48,8 @@ fi
 echo "Installing tmux config"
 cp -f "${DIR}/tmux.conf" "${HOME}/.tmux.conf"
 if [[ ! -e "${HOME}/.tmux.conf-overrides" ]]; then
-	cp -f "${DIR}/tmux.conf-overrides" "${HOME}/.tmux.conf-overrides"
+	echo "# Put any local overrides in here, like solarized theme, etc" \
+    >> "${HOME}/.tmux.conf-overrides"
 fi
 tmux source ~/.tmux.conf
 
