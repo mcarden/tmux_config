@@ -7,7 +7,9 @@ fi
 
 # Check for dependencies
 DEPS=""
-type git &>/dev/null || DEPS="  git\n"
+for dep in git tmux; do
+	type ${dep} &>/dev/null || DEPS+="\t${dep}\n"
+done
 
 if [[ -n "${DEPS}" ]] ; then
 	echo "Please install missing dependencies:"
@@ -19,7 +21,6 @@ fi
 set -eo pipefail
 finish() {
 	if [[ $? -ne 0 ]]; then
-		set +x
 		echo -e "\nSorry, something went wrong. Try running with debug, i.e.:"
 		echo -e "  ${0} --debug\n"
 	fi
@@ -30,7 +31,6 @@ trap finish EXIT
 DIR="$(dirname "$(readlink -f "${0}")")"
 
 # Get tpm (tmux plugin manager)
-
 mkdir -p "${HOME}/.tmux/plugins/"
 if [[ -d "${HOME}/.tmux/plugins/tpm/.git" ]]; then
 	( cd "${HOME}/.tmux/plugins/tpm"
@@ -44,8 +44,8 @@ fi
 
 # Put our tmux.conf in place
 echo "Installing tmux config"
-cp "${DIR}/tmux.conf" "${HOME}/.tmux.conf"
-tmux source ~/.tmux.conf:q
+cp -f "${DIR}/tmux.conf" "${HOME}/.tmux.conf"
+tmux source ~/.tmux.conf
 
 # Install all the plugins specified in .tmux.conf (or in tmux <prefix> + I)
 tmux -C run-shell ~/.tmux/plugins/tpm/bindings/install_plugins
