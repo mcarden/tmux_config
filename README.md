@@ -14,3 +14,4 @@ This script will then install all the plugins listed in the tmux.conf file.
   * C-[h,j,k,l] : More around panes, if your using my vim_config then this will seemlessly work in vim and tmux panes.
   * Alt-<arrow>: Move around panes.
   * Shift-<arrow left, right> : to switch windows.
+  * Alt-f : Zoom in on pane (fullscreen pane)
