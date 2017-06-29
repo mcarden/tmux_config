@@ -14,6 +14,6 @@ This script will then install all the plugins listed in the tmux.conf file.
   * Alt-<arrow>: Move around panes.
   * Shift-<arrow left, right> : to switch windows.
   * Alt-f : Zoom in on pane (fullscreen pane)
-  * Added attional eaiser to remember shortcuts for splitting panes
-    * prefix-| or \ : split virtically
+  * Added additional, easier to remember shortcuts for splitting panes
+    * prefix-| or \ : split vertically
     * prefix-\_ or - : split horizontally
